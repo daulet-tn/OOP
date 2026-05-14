@@ -1,3 +1,4 @@
+package users;
 import enums.UserRole;
 import enums.StudentDegree;
 
@@ -27,7 +28,7 @@ public class Student extends User{
     public int getYear(){return year;}
     public StudentDegree getDegree(){return degree;}
     public String getMajor(){return major;}
-    public String getGpa(){return gpa;}
+    public double getGpa(){return gpa;}
     
     //Setter
     public void setGpa(double gpa){this.gpa = gpa;}

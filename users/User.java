@@ -1,3 +1,4 @@
+package users;
 import enums.UserRole;
 
 public abstract class User{
@@ -28,7 +29,7 @@ public abstract class User{
     public void setEmail(String email){this.email = email;}
 
     @Override
-    punlic String toString(){
+    public String toString(){
         return firstName + " " + lastName + " ( " + role + " )";
     }
 }

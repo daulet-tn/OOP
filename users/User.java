@@ -3,7 +3,7 @@ import common.Massage;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class User{
+public abstract class User implements Printable, Comparable<User>, java.io.Serializable {
     protected String userId;
     protected String firstName;
     protected String lastName;
@@ -44,12 +44,29 @@ public abstract class User{
         to.reciveMassage(msg);
         System.out.println("Massage sent: " + this.firstName + " -> " + to.firstName);
     }
+
+    public void reciveMassage(Massage msg){
+        inbox.add(msg);
+    }
+
+    public void inbox(){
+        if (inbox.isEmpty()){
+            System.out.println("Inbox is empty.")
+            return;
+        }
+        for (Massage m : inbox){
+            System.out.println(m);
+        }
+    }
+
+
     // Getters
     public String getUserId(){return userId;}
     public String getFirstName(){return firstName;}
     public String getLastName(){return lastName;}
     public String getEmail(){return email;}
     public String getRole(){return role;}
+    public boolean isLoggedIn(){return isLoggedIn;}
 
     //Setters 
     public void setFirstName(String firstName){this.firstName = firstName;}
@@ -57,7 +74,31 @@ public abstract class User{
     public void setEmail(String email){this.email = email;}
 
     @Override
-    punlic String toString(){
+    public String toString(){
         return firstName + " " + lastName + " ( " + role + " )";
+    }
+
+    @Override
+    public String print(){
+        return "User( Id = " + userId + ", name = " + firstName + " " + lastName + 
+        ", email = " + email + ", role = " + role + ")";
+    }
+
+    @Override
+    public int compareTo(User other){
+        return this.lastName.compareTo(other.lastName);
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if (this == o)return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return userId.equals(user.userId);
+    }
+
+    @Override
+    public int hashCode(){
+        return userId.hashCode();
     }
 }

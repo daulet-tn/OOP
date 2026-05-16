@@ -1,0 +1,314 @@
+Complaint
+
+Message
+-messageId String
+-sender User
+-receiver User
+-content String
+-timestamp LocalDateTime
+
+News
+«Factory»
+UserFactory
+
+-complaintId String
+-sender User
+-subject String
+-description String
+-status RequestStatus
+
+-newsId String
+-title String
+-content String
+-author User
+-publishDate LocalDateTime
+
++createUser(role UserRole, ...) : User
+
++resolve() : void
+creates
+«abstract»
+User
+#userId String
+#firstName String
+#lastName String
+#email String
+#passwordHash String
+#role UserRole
+#isLoggedIn boolean
+#inbox List<Message>
++login(password String) : boolean
++logout() : void
++sendMessage(to User, text String) : void
++receiveMessage(msg Message) : void
++viewInbox() : void
+
+«enum»
+UserRole
+
+Admin
+Employee
++addUser(user User) : void
++removeUser(userId String) : void
++updateUser(user User) : void
++viewLogs() : void
++viewAllUsers() : void
+
+uses
+
+uses
+Manager
+
+«Singleton»
+Database
+Transcript
+
+«Singleton»
+Logger
+
+-instance Database
+-users Map<String User>
+
+-student Student
+-marks List<Mark>
+-gpa double
+
+-instance Logger
+-logs List<String>
+
+-Database()
++getInstance() : Database
++addUser(user User) : void
++removeUser(id String) : void
++getUser(id String) : User
++getAllUsers() : List<User>
+
++printTranscript() : void
+
+ADMIN
+TEACHER
+STUDENT
+MANAGER
+RESEARCHER
+
+#employeeId String
+#department String
+#salary double
+
+-Logger()
++getInstance() : Logger
++log(message String) : void
++getLogs() : List<String>
+
+ResearchEmployee
+
+-managerType ManagerType
+-observerList List<Observer>
+
+-researcherImpl ResearcherImpl
+-MIN_H_INDEX_FOR_PROJECT int = 3
+
++approveRegistration(request Request) : void
++rejectRegistration(request Request) : void
++assignTeacher(teacher Teacher, course Course) : void
++createReport(students List<Student>) : AcademicReport
++publishNews(title String, content String) : void
++addObserver(o Observer) : void
++removeObserver(o Observer) : void
++notifyObservers(news String) : void
+
++addResearchPaper(paper ResearchPaper) : void
++addResearchProject(project ResearchProject) : void
++calculateHIndex() : int
++startNewProject(title String, desc String) : void
++viewResearchInfo() : void
+
+approves
+
+composition
+
+throws
+
+Mark
+-student Student
+-course Course
+-att1 double
+-att2 double
+-finalExam double
+
+«interface»
+Observable
+
++addObserver(o Observer) : void
++removeObserver(o Observer) : void
++notifyObservers(news String) : void
+
++getTotal() : double
++getLetterGrade() : String
++getGpaPoint() : double
++isPassed() : boolean
+
+«enum»
+ManagerType
+OR
+DEPARTMENT
+DEAN_OFFICE
+RECTOR_OFFICE
+
+Request
+
+ResearcherImpl
+-papers List<ResearchPaper>
+-projects List<ResearchProject>
++addResearchPaper(paper ResearchPaper) : void
++addResearchProject(project ResearchProject) : void
++calculateHIndex() : int
+
+-requestId String
+-sender User
+-description String
+-status RequestStatus
+
+«exception»
+LowHIndexException
+
++approve() : void
++reject() : void
+
+Course
+ResearchProject
+
+-courseId String
+-name String
+-credits int
+-maxStudents int
+-teacher Teacher
+-students List<Student>
+-lessons List<Lesson>
+
+AcademicReport
+-students List<Student>
++generateReport() : void
+
+«interface»
+Researcher
+
+-projectId String
+-title String
+-description String
+-publishedPapers List<ResearchPaper>
+-isActive boolean
+
++addResearchPaper(paper ResearchPaper) : void
++calculateHIndex() : int
+
++addStudent(student Student) : void
++removeStudent(student Student) : void
++addLesson(type LessonType, topic String) : void
++setTeacher(teacher Teacher) : void
+students
+
+«enum»
+RequestStatus
+PENDING
+APPROVED
+REJECTED
+
++addPaper(paper ResearchPaper) : void
++finish() : void
+
+teacher
+
+lessons
+
+Student
+-studentId String
+-year int
+-degree StudentDegree
+-major String
+-gpa double
+-totalCredits int
+-MAX_CREDITS int = 21
+-registeredCourses List<Course>
+-marks List<Mark>
+
+Teacher
+-title TeacherTitle
+-courses List<Course>
+-rating double
+-ratingCount int
+
+Lesson
+
++addCourse(course Course) : void
++viewCourses() : void
++putMark(student Student, course Course, att1 double, att2 double, finalExam double) : void
++viewStudents(course Course) : void
++addRating(r double) : void
+
++registerForCourse(course Course) : void
++viewMarks() : void
++addMark(mark Mark) : void
++getTranscript() : Transcript
++rateTeacher(teacher Teacher, rating double) : void
++update(news String) : void
+
+ResearchPaper
+
+-lessonId String
+-type LessonType
+-topic String
+-teacher Teacher
+
+-paperId String
+-title String
+-authors String
+-journal String
+-year int
+-citations int
+-pages int
++addCitation() : void
++setCitations(c int) : void
+
+throws
+
+«interface»
+Observer
+
++update(news String) : void
+
+«exception»
+MaxCreditsExceededException
+
+«enum»
+StudentDegree
+BACHELOR
+MASTER
+PHD
+
+«enum»
+TeacherTitle
+TUTOR
+LECTOR
+SENIOR_LECTOR
+ASSOCIATE_PROFESSOR
+PROFESSOR
+
+«interface»
+Printable
+
++print() : String
+
+«enum»
+LessonType
+LECTURE
+PRACTICE
+LAB
+
+«exception»
+NotAResearcherException
+
+«exception»
+MaxFailsExceededException
+
+

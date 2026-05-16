@@ -1,3 +1,49 @@
+import enums.UserRole;
+import system.Database;
+import system.Logger;
+import java.util.List;
 
+public class Admin extends User{
 
-    
+    public Admin(String userId, String firstName, String lastName, String email, String passwordHash){
+        super(userId, firstName, lastName, email, passwordHash, UserRole.ADMIN);
+    }
+
+    public void addUser(User user){
+        Database.getInstance().addUser(user);
+        Logger.getInstance().log("Admin " + firstName + " added user:" + user);
+        System.out.pritln("User added: " + user);
+    }
+
+    public void removeUser(String userId){
+        Database.getInstance().removeUser(userid);
+        Logger.getInstance().log("Admin " + firstName + "remove user: " +userId);
+        System.out.println("User remove " + userId) 
+    }
+
+    public void updateUser(User user){
+        Database.getInstance().updateUser(user);
+        Logger.getInstance().log("Admin " + firstName + " update user " + userId);
+        System.out.println("User update: " + user); 
+    }
+
+    public void viewLogs(){
+        System.out.println("==== System Logs ====");
+        List<String> logs = Logger.getInstance().getLogs();
+        for (String log : logs){
+            System.out.println(log);
+        }
+    }
+
+    public void viewAllUsers(){
+        System.out.println("==== All Users ====");
+        for (User u : Database.getInstance().getAllUsers()){
+            System.out.println(" " + u.print());
+        }
+    }
+
+    @Override
+    public String print(){
+        return "Admin ( name = " + firstName + " " + lastName + ", email = " + email + ")";
+    }
+}    

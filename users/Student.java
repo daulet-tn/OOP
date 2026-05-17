@@ -39,7 +39,7 @@ public class Student extends User implements Observer{
             throw new MaxCreditsExceededExeption(
                 "Cannot register; total credits would be " + (totalCredits + course.getCredits()) + 
                 ", max is " + MAX_CREDITS;
-            )
+            );
         }
         registeredCourses.add(course);
         course.addStudent(this);

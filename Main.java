@@ -1,7 +1,6 @@
 import users.*;
 import academic.*;
 import communication.*;
-import reports.*;
 import system.*;
 import enums.*;
 import exceptions.*;
@@ -158,9 +157,14 @@ public class Main {
                 "RP003", "AI Ethics", "Aidar M.", "Nature AI", 2025, 6
         );
 
-        researcher.addResearchPaper(paper1);
-        researcher.addResearchPaper(paper2);
-        researcher.addResearchPaper(paper3);
+        try {
+                researcher.addResearchPaper(paper1);
+                researcher.addResearchPaper(paper2);
+                researcher.addResearchPaper(paper3);
+        } 
+        catch (NotAResearcherException e) {
+                System.out.println("ERROR: " + e.getMessage());
+        }
 
         System.out.println("H-Index: " + researcher.calculateHIndex());
         researcher.viewResearchInfo();

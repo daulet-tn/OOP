@@ -1,3 +1,5 @@
+package communication;
+
 import enums.RequestStatus;
 import users.User;
 import interfaces.Printable;
@@ -7,14 +9,14 @@ public class Complaint implements Printable{
     private String complaintId;
     private User sender;
     private String subject;
-    private String despcription;
+    private String description;
     private RequestStatus status;
 
     public Complaint(User sender, String subject, String despcription){
         this.complaintId = "CMP- " + (++counter);
         this.sender = sender;
         this.subject = subject;
-        this.despcription = despcription;
+        this.description = description;
         this.status = RequestStatus.PENDING;
     }
 
@@ -33,7 +35,7 @@ public class Complaint implements Printable{
 
     @Override
     public String print(){
-        return return "Complaint ( id = " + complaintId + ", subject = "
+        return "Complaint ( id = " + complaintId + ", subject = "
         + subject + ", status = " + status + " )";
     }
 

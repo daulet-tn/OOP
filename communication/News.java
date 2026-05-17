@@ -1,3 +1,5 @@
+package communication;
+
 import users.User;
 import interfaces.Printable;
 import java.time.LocalDateTime;

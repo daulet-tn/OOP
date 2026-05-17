@@ -1,3 +1,5 @@
+package communication;
+
 import enums.RequestStatus;
 import users.User;
 import interfaces.Printable;
@@ -20,7 +22,7 @@ public class Request implements Printable{
         this.status = RequestStatus.APPROVED;
     }
 
-    public void rejected(){
+    public void reject(){
         this.status = RequestStatus.REJECTED;
     }
 

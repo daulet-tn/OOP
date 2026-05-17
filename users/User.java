@@ -1,6 +1,7 @@
 package users;
 import enums.UserRole;
 import common.Message;
+import interfaces.Printable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public abstract class User implements Printable, Comparable<User>, java.io.Seria
     protected String passwordHash;
     protected UserRole role;
     protected boolean isLoggedIn;
-    protected List<Massage> inbox = new ArrayList<>();
+    protected List<Message> inbox = new ArrayList<>();
 
     public User(String userId, String firstName, String lastName, String email,
                 String passwordHash, UserRole role){
@@ -67,7 +68,7 @@ public void viewInbox() {
     public String getFirstName(){return firstName;}
     public String getLastName(){return lastName;}
     public String getEmail(){return email;}
-    public String getRole(){return role;}
+    public UserRole getRole(){ return role; }
     public boolean isLoggedIn(){return isLoggedIn;}
 
     //Setters 

@@ -7,6 +7,7 @@ import exceptions.MaxCreditsExceededException;
 import interfaces.Observer;
 import java.util.ArrayList;
 import java.util.List;
+import enums.StudentDegree;
 
 public class Student extends User implements Observer{
     private String studentId;
@@ -34,7 +35,7 @@ public class Student extends User implements Observer{
         this.totalCredits = 0;
     }
 
-    public void registerForCourse(Course course) throws MaxCreditsExceededExeption{
+    public void registerForCourse(Course course) throws MaxCreditsExceededException{
         if (totalCredits + course.getCredits() > MAX_CREDITS){
             throw new MaxCreditsExceededException(
                 "Cannot register; total credits would be " + (totalCredits + course.getCredits()) + 
@@ -67,7 +68,7 @@ public class Student extends User implements Observer{
 
     public void rateTeacher(Teacher teacher, double rating){
         teacher.addRating(rating);
-        System.out.println(firstName + " rated " + teacher.getFirstName() +": " rating);
+        System.out.println(firstName + " rated " + teacher.getFirstName() +": " + rating);
     }
 
     @Override
@@ -83,7 +84,7 @@ public class Student extends User implements Observer{
     public String getMajor(){return major;}
     public double getGpa(){return gpa;}
     public List<Course> getRegisteredCourses(){return registeredCourses;}
-    public List<Marks> getMarks(){ return marks;}
+    public List<Mark> getMarks(){ return marks;}
     public int getTotalCredits(){return totalCredits;}
 
     public void setGpa(double gpa) {this.gpa = gpa;}

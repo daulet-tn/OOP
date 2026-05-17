@@ -3,7 +3,7 @@ import enums.*;
 import academic.Course;
 import communication.News;
 import communication.Request;
-import reports.AcademicReport;
+import academic.AcademicReport;
 import interfaces.Observable;
 import interfaces.Observer;
 import java.util.ArrayList;

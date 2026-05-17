@@ -4,10 +4,12 @@ import system.Database;
 import system.Logger;
 import java.util.List;
 
-public class Admin extends User{
+public class Admin extends Employee{
 
-    public Admin(String userId, String firstName, String lastName, String email, String passwordHash){
-        super(userId, firstName, lastName, email, passwordHash, UserRole.ADMIN);
+    public Admin(String userId, String firstName, String lastName, String email, String passwordHash,
+             String employeeId, String department, double salary) {
+        super(userId, firstName, lastName, email, passwordHash,
+            UserRole.ADMIN, employeeId, department, salary);
     }
 
     public void addUser(User user) {

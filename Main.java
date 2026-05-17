@@ -28,7 +28,8 @@ public class Main {
         System.out.println("\n--- 2. Factory: Creating users ---");
 
         // Admin
-        Admin admin = new Admin("U001", "Amir", "Kabdullin", "amir@kbtu.kz", "admin123");
+        Admin admin = new Admin("U001", "Amir", "Kabdullin", "amir@kbtu.kz", "admin123",
+        "E000", "Administration", 550000);
 
         // Students
         Student student1 = new Student("U002", "Aliya", "Nurova", "aliya@kbtu.kz", "pass1",

@@ -1,3 +1,4 @@
+package users;
 import enums.*;
 import academic.Course;
 import communication.News;

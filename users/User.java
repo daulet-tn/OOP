@@ -52,7 +52,7 @@ public abstract class User implements Printable, Comparable<User>, java.io.Seria
 
     public void inbox(){
         if (inbox.isEmpty()){
-            System.out.println("Inbox is empty.")
+            System.out.println("Inbox is empty.");
             return;
         }
         for (Massage m : inbox){

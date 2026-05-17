@@ -13,13 +13,13 @@ public class Admin extends User{
     public void addUser(User user){
         Database.getInstance().addUser(user);
         Logger.getInstance().log("Admin " + firstName + " added user:" + user);
-        System.out.pritln("User added: " + user);
+        System.out.println("User added: " + user);
     }
 
     public void removeUser(String userId){
-        Database.getInstance().removeUser(userid);
+        Database.getInstance().removeUser(userId);
         Logger.getInstance().log("Admin " + firstName + "remove user: " +userId);
-        System.out.println("User remove " + userId) 
+        System.out.println("User remove " + userId);
     }
 
     public void updateUser(User user){

@@ -183,3 +183,4 @@ The project includes:
 
 * Tanirberdi Daulet
 * Khandilda Nurasyl
+* Yeraly Abutalifuly

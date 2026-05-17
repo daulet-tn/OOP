@@ -2,104 +2,184 @@
 
 ## Project Description
 
-User Role Management System is a university management system designed to organize users, academic processes, research activities, requests, and communication inside an educational institution.
+This project is a console-based university management system developed in Java using Object-Oriented Programming principles. The system helps students, teachers, managers, administrators, and research employees work together inside the university environment.
 
-The system is based on Object-Oriented Programming principles and represents different university roles such as students, teachers, managers, admins, and researchers.
+The project includes basic university functions such as course registration, viewing marks and transcript, sending messages, publishing news, approving requests, generating reports, and managing research activities.
+
+The main goal of the project is to demonstrate the use of inheritance, polymorphism, abstraction, encapsulation, interfaces, exceptions, serialization, and design patterns in a real Java application.
+
+---
 
 ## Main Features
 
-- User authentication: login and logout
-- Role-based user management
-- Student course registration
-- Teacher course management
-- Mark calculation and transcript generation
-- Manager approval of requests and course registration
-- Research paper and research project management
-- Internal messaging between users
-- Complaint and request handling
-- News publishing
-- Logging user actions
-- Centralized data storage using a singleton database
-
-## User Roles
-
-### Admin
-Admin manages users and views system logs.
-
-Main responsibilities:
-- Add users
-- Remove users
-- Update user information
-- View logs
-
 ### Student
-Student can register for courses, view marks, generate transcripts, and rate teachers.
 
-Main responsibilities:
-- Register for courses
-- View marks
-- Get transcript
-- Rate teachers
-- Choose research supervisor
+* Register for courses
+* View marks
+* Get transcript
+* Rate teachers
+* Send messages
+* View inbox
 
 ### Teacher
-Teacher manages courses, puts marks, and views students.
 
-Main responsibilities:
-- View courses
-- Manage courses
-- Put marks
-- View students
+* Manage courses
+* Put marks
+* View students
+* Receive ratings
 
 ### Manager
-Manager controls academic processes and handles requests.
 
-Main responsibilities:
-- Approve course registration
-- Add courses for registration
-- Assign teachers to courses
-- Create academic reports
-- Manage news
-- View student lists
-- Process requests
+* Approve or reject registration requests
+* Assign teachers to courses
+* Publish news
+* Generate academic reports
 
-### Researcher
-Researcher works with research papers and research projects.
+### Admin
 
-Main responsibilities:
-- Add research papers
-- Add research projects
-- View research papers
-- View research projects
-- Calculate h-index
+* Add users
+* Remove users
+* Update users
+* View logs
+* View all users
+
+### Research Employee
+
+* Add research papers
+* Add research projects
+* Calculate H-index
+* Start research projects
+
+---
+
+## OOP Principles Used
+
+* Inheritance
+* Polymorphism
+* Abstraction
+* Encapsulation
+* Interfaces
+
+---
+
+## Design Patterns
+
+### Singleton
+
+Used in:
+
+* Database
+* Logger
+* UserFactory
+
+### Factory
+
+Used in:
+
+* UserFactory
+
+### Observer
+
+Used for:
+
+* News publishing and notification system
+
+---
 
 ## Project Structure
 
-```text
-src/
-├── users/
-│   ├── User.java
-│   ├── Student.java
-│   ├── Employee.java
-│   ├── Teacher.java
-│   ├── Manager.java
-│   └── Admin.java
-│
-├── academic/
-│   ├── Course.java
-│   ├── Lesson.java
-│   ├── Mark.java
-│   └── Transcript.java
-│
-├── research/
-│   ├── Researcher.java
-│   ├── ResearcherImpl.java
-│   ├── ResearchEmployee.java
-│   ├── ResearchPaper.java
-│   └── ResearchProject.java
-│
-├── communication/
-│   ├── Message.java
-│   ├── Request.java
-│   ├── Complaint.java
+### users
 
+Contains all user classes:
+
+* User
+* Student
+* Teacher
+* Manager
+* Admin
+* Employee
+* ResearchEmployee
+
+### academic
+
+Contains academic classes:
+
+* Course
+* Lesson
+* Mark
+* Transcript
+* ResearchPaper
+* ResearchProject
+
+### communication
+
+Contains communication classes:
+
+* Message
+* Request
+* Complaint
+* News
+
+### system
+
+Contains system classes:
+
+* Database
+* Logger
+* UserFactory
+
+### interfaces
+
+Contains interfaces:
+
+* Observer
+* Observable
+* Printable
+* Researcher
+
+### enums
+
+Contains enumerations:
+
+* UserRole
+* TeacherTitle
+* StudentDegree
+* ManagerType
+* LessonType
+* RequestStatus
+
+### exceptions
+
+Contains custom exceptions:
+
+* MaxCreditsExceededException
+* LowHIndexException
+* NotAResearcherException
+* MaxFailsExceededException
+
+---
+
+## Technologies Used
+
+* Java
+* VS Code
+* PlantUML / UML Diagrams
+* GitHub
+
+---
+
+## UML Diagrams
+
+The project includes:
+
+1. Use-Case Diagram
+2. Object Diagram
+3. Class Diagram Before Refactoring
+4. Class Diagram After Refactoring
+
+---
+
+## Team Members
+
+* Tanirberdi Daulet
+* Khandilda Nurasyl

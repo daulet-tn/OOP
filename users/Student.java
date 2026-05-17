@@ -3,7 +3,7 @@ import enums.UserRole;
 import academic.Course;
 import academic.Mark;
 import academic.Transcript;
-import exception.MaxCreditsExceededExeption;
+import exceptions.MaxCreditsExceededException;
 import interfaces.Observer;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +36,9 @@ public class Student extends User implements Observer{
 
     public void registerForCourse(Course course) throws MaxCreditsExceededExeption{
         if (totalCredits + course.getCredits() > MAX_CREDITS){
-            throw new MaxCreditsExceededExeption(
+            throw new MaxCreditsExceededException(
                 "Cannot register; total credits would be " + (totalCredits + course.getCredits()) + 
-                ", max is " + MAX_CREDITS;
+                ", max is " + MAX_CREDITS
             );
         }
         registeredCourses.add(course);
@@ -67,7 +67,7 @@ public class Student extends User implements Observer{
 
     public void rateTeacher(Teacher teacher, double rating){
         teacher.addRating(rating);
-        Systemout.println(firstName + " rated " + teacher.getFirstName() +": " rating);
+        System.out.println(firstName + " rated " + teacher.getFirstName() +": " rating);
     }
 
     @Override

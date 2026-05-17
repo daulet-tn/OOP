@@ -10,22 +10,37 @@ public class Admin extends User{
         super(userId, firstName, lastName, email, passwordHash, UserRole.ADMIN);
     }
 
-    public void addUser(User user){
-        Database.getInstance().addUser(user);
-        Logger.getInstance().log("Admin " + firstName + " added user:" + user);
-        System.out.println("User added: " + user);
+    public void addUser(User user) {
+        try {
+            Database.getInstance().addUser(user);
+            Logger.getInstance().log("Admin " + firstName + " added user: " + user);
+            System.out.println("User added: " + user);
+        } 
+        catch (Exception e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
     }
 
-    public void removeUser(String userId){
-        Database.getInstance().removeUser(userId);
-        Logger.getInstance().log("Admin " + firstName + "remove user: " +userId);
-        System.out.println("User remove " + userId);
+    public void removeUser(String userId) {
+        try {
+            Database.getInstance().removeUser(userId);
+            Logger.getInstance().log("Admin " + firstName + " removed user: " + userId);
+            System.out.println("User removed: " + userId);
+        } 
+        catch (Exception e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
     }
 
-    public void updateUser(User user){
-        Database.getInstance().updateUser(user);
-        Logger.getInstance().log("Admin " + firstName + " update user " + userId);
-        System.out.println("User update: " + user); 
+    public void updateUser(User user) {
+        try {
+            Database.getInstance().updateUser(user);
+            Logger.getInstance().log("Admin " + firstName + " updated user: " + user.getUserId());
+            System.out.println("User updated: " + user);
+        } 
+        catch (Exception e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
     }
 
     public void viewLogs(){

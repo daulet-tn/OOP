@@ -1,6 +1,5 @@
 import users.*;
 import academic.*;
-import research.*;
 import communication.*;
 import reports.*;
 import system.*;
@@ -47,8 +46,12 @@ public class Main {
                 "E002", "Dean Office", 500000, ManagerType.DEAN_OFFICE);
 
         // Factory usage
-        User factoryUser = UserFactory.createUser(UserRole.STUDENT, "U010",
-                "Test", "Student", "test@kbtu.kz", "test123");
+        UserFactory factory = UserFactory.getInstance();
+
+        User factoryUser = factory.createStudent(
+                "U010", "Test", "Student", "test@kbtu.kz", "test123",
+                "S010", 1, StudentDegree.BACHELOR, "CS"
+        );
         System.out.println("Factory created: " + factoryUser.print());
 
         // Admin adds users to DB
@@ -143,17 +146,17 @@ public class Main {
                 "aidar@kbtu.kz", "rpass", "E003", "CS", 700000);
 
         // Add papers with citations
-        ResearchPaper paper1 = new ResearchPaper("ML in Education", "Aidar M.",
-                "IEEE Journal", 2024, 12);
-        paper1.setCitations(15);
+        ResearchPaper paper1 = new ResearchPaper(
+                "RP001", "ML in Education", "Aidar M.", "IEEE Journal", 2024, 12
+        );
 
-        ResearchPaper paper2 = new ResearchPaper("Deep Learning for NLP", "Aidar M.",
-                "ACM Computing", 2023, 8);
-        paper2.setCitations(10);
+        ResearchPaper paper2 = new ResearchPaper(
+                "RP002", "Deep Learning for NLP", "Aidar M.", "ACM Computing", 2023, 8
+        );
 
-        ResearchPaper paper3 = new ResearchPaper("AI Ethics", "Aidar M.",
-                "Nature AI", 2025, 6);
-        paper3.setCitations(5);
+        ResearchPaper paper3 = new ResearchPaper(
+                "RP003", "AI Ethics", "Aidar M.", "Nature AI", 2025, 6
+        );
 
         researcher.addResearchPaper(paper1);
         researcher.addResearchPaper(paper2);
@@ -192,8 +195,8 @@ public class Main {
         System.out.println("\n--- 13. Printable Interface ---");
         System.out.println(student1.print());
         System.out.println(teacher.print());
-        System.out.println(oop.print());
-        System.out.println(paper1.print());
+        System.out.println(oop);
+        System.out.println(paper1);
 
         // ==============================
         // LOGOUT

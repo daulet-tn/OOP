@@ -1,6 +1,6 @@
 package users;
 import enums.UserRole;
-import common.Massage;
+import common.Message;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,25 +40,26 @@ public abstract class User implements Printable, Comparable<User>, java.io.Seria
         System.out.println(firstName + " " + lastName + " logged out.");
     }
 
-    public void sendMassage(User to, String text){
-        Massage msg = new Massage(this, to, text);
-        to.reciveMassage(msg);
-        System.out.println("Massage sent: " + this.firstName + " -> " + to.firstName);
+    public void sendMessage(User to, String text) {
+    Message msg = new Message(this, to, text);
+    to.receiveMessage(msg);
+    System.out.println("Message sent: " + this.firstName + " -> " + to.firstName);
+}
+
+public void receiveMessage(Message msg) {
+    inbox.add(msg);
+}
+
+public void viewInbox() {
+    if (inbox.isEmpty()) {
+        System.out.println("Inbox is empty.");
+        return;
     }
 
-    public void reciveMassage(Massage msg){
-        inbox.add(msg);
+    for (Message m : inbox) {
+        System.out.println(m);
     }
-
-    public void inbox(){
-        if (inbox.isEmpty()){
-            System.out.println("Inbox is empty.");
-            return;
-        }
-        for (Massage m : inbox){
-            System.out.println(m);
-        }
-    }
+}
 
 
     // Getters

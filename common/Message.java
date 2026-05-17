@@ -1,3 +1,5 @@
+package common;
+
 import users.User;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
